@@ -1,0 +1,9 @@
+{
+  "shopDatabaseConfiguration":
+  {
+    "host": "localhost",
+    "database": "shop",
+    "user": "root",
+    "password": "password"
+  }
+}
