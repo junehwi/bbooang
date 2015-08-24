@@ -19,6 +19,8 @@ exports.handle = function (req, res) {
     params = req.query;
   }
 
+  console.log(params);
+
   var action = findAction(operator);
 
   return action(params, function (err, result) {

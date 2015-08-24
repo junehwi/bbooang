@@ -16,11 +16,11 @@ CREATE TABLE IF NOT EXISTS `shop`.`member` (
   `memseq` INT(11) NOT NULL AUTO_INCREMENT ,
   `email` CHAR(32) NOT NULL,
   `password` CHAR(32) NOT NULL,
-  `platform` CHAR(16) NOT NULL, 
+  `platform` CHAR(16) NOT NULL,
   `name` CHAR(8) NOT NULL DEFAULT '',
   `sex` CHAR(8) NOT NULL DEFAULT '',
   `phone` CHAR(16) NOT NULL DEFAULT '',
-  `uuid` CHAR(32) NOT NULL DEFAULT '',
+  `uuid` CHAR(32),
   `creationTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `lastLoginTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`memseq`),
@@ -36,11 +36,35 @@ CREATE TABLE IF NOT EXISTS `shop`.`reservation` (
   `memseq` INT(11) NOT NULL,
   `designer` CHAR(32) NOT NULL,
   `type` CHAR(32) NOT NULL,
-  `reservationTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `startTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `endTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `contents` VARCHAR(256) NOT NULL DEFAULT '',
   `creationTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`resseq`),
   INDEX `CREATIONTIME` (`memseq` ASC))
+ENGINE = InnoDB,
+DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `shop`.`designer`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shop`.`designer` (
+  `desseq` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` CHAR(32) NOT NULL,
+  PRIMARY KEY (`desseq`),
+  INDEX `DESSEQ` (`desseq` ASC))
+ENGINE = InnoDB,
+DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
+-- Table `shop`.`type`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shop`.`type` (
+  `typeseq` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` CHAR(32) NOT NULL,
+  `periodInMinites` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`typeseq`),
+  INDEX `TYPESEQ` (`typeseq` ASC))
 ENGINE = InnoDB,
 DEFAULT CHARACTER SET = utf8;
 
